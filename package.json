@@ -4,7 +4,9 @@
   "description": "React &amp; Redux blog demo",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack"
+    "build": "./node_modules/.bin/webpack",
+    "start":"./node_modules/.bin/webpack-dev-server --hot --inline --content-base",
+    "watch":"./node_modules/.bin/webpack --watch"
   },
   "repository": {
     "type": "git",
