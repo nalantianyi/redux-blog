@@ -13,11 +13,13 @@ const LOAD_ARTICLES_ERROR = 'LOAD_ARTICLES_ERROR';
 
 //action creator
 export function loadArticles() {
+    //返回的是一个action
     return {
         types: [LOAD_ARTICLES, LOAD_ARTICLES_SUCCESS, LOAD_ARTICLES_ERROR],
         url: '/api/articles.json'
     }
 }
+//reducer
 function previewList(state = initialState, action) {
     switch (action.type) {
         case LOAD_ARTICLES: {

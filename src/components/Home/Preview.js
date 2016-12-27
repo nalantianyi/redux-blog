@@ -1,13 +1,13 @@
 /**
  * Created by nalantianyi on 2016/12/21.
  */
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import './Preview.css';
 
 export default class Preview extends Component {
     static propTypes = {
-        title: React.PropTypes.string,
-        link: React.PropTypes.string
+        title: PropTypes.string,
+        link: PropTypes.string
     };
 
     render() {
