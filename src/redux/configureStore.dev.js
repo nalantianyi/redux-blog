@@ -5,6 +5,8 @@ import createFetchMiddleware from 'redux-composable-fetch';
 import ThunkMiddleware from 'redux-thunk';
 import rootReducer from './reducers';
 import DevTools from './DevTools';
+import {routerMiddleware} from 'react-router-redux';
+import {hashHistory} from 'react-router';
 
 const FetchMiddleware = createFetchMiddleware({
   afterFetch({ action, result }) {
@@ -18,7 +20,7 @@ const FetchMiddleware = createFetchMiddleware({
 });
 
 const finalCreateStore = compose(
-  applyMiddleware(ThunkMiddleware, FetchMiddleware),
+  applyMiddleware(ThunkMiddleware, FetchMiddleware,routerMiddleware(hashHistory)),
   DevTools.instrument()
 )(createStore);
 

@@ -3,8 +3,8 @@
  */
 import React from 'react';
 import {connect} from 'react-redux';
-import { actions } from './HomeRedux';
-import { push } from 'react-router-redux';
+import {actions} from './HomeRedux';
+import {push} from 'react-router-redux';
 import PreviewList from '../components/Home/PreviewList';
 
 @connect(state => {
@@ -17,11 +17,10 @@ import PreviewList from '../components/Home/PreviewList';
 })
 class Home extends React.Component {
     render() {
-        const { loadArticles, articleList, push } = this.props;
         return (
             <div>
                 <h1>Home</h1>
-                <PreviewList {...this.props} />
+                <PreviewList push={this.props.push} {...this.props} />
             </div>
         );
     }
