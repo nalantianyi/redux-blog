@@ -1,30 +1,40 @@
 /**
  * Created by nalantianyi on 2016/12/21.
  */
-import React, {Component, PropTypes} from 'react';
+import React from 'react';
 import Preview from './Preview';
-export default class PreviewList extends Component {
+
+class PreviewList extends React.Component {
     static propTypes = {
-        loading: PropTypes.bool,
-        error: PropTypes.bool,
-        articleList: PropTypes.arrayOf(React.PropTypes.object),
-        loadActicles: PropTypes.func
+        loading: React.PropTypes.bool,
+        error: React.PropTypes.bool,
+        articleList: React.PropTypes.arrayOf(React.PropTypes.object),
+        loadArticles: React.PropTypes.func,
+        push: React.PropTypes.func,
     };
 
     componentDidMount() {
-        this.props.loadActicles();
+        this.props.loadArticles();
     }
 
     render() {
-        const {loading, error, articleList}=this.props;
+        const {loading, error, articleList} = this.props;
         if (error) {
-            return <p className="message">Oops,something is wrong.</p>;
+            return <p className="message">Oops, something is wrong.</p>;
         }
+
         if (loading) {
             return <p className="message">Loading...</p>;
         }
-        return this.props.articleList.map(item => (
-            <Preview {...item} key={item.id}></Preview>
-        ));
+
+        return (
+            <div>
+                {articleList.map(item => {
+                    return <Preview {...item} key={item.id} push={this.props.push}/>
+                })}
+            </div>
+        );
     }
 }
+
+export default PreviewList;
